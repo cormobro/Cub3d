@@ -6,7 +6,8 @@ int	main(int argc, char **argv)
 
 	map = NULL;
 	if (!arg_checker(argc, argv))
-		return (ft_putstr_fd("Erreur dans les arguments.\n", 2));
+		return (ft_putstr_fd("Error\nFile extension is not '.cub'\n", 2));
 	if (!map_checker(argv, map))
-		return (ft_putstr_fd("Erreur dans la map.\n", 2));
+		return (ft_putstr_fd("Error\nWrong map format\n", 2));
+	return (0);
 }

@@ -9,13 +9,13 @@
 /*   Updated: 2022/10/20 13:35:10 by febonaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../Includes/get_next_line.h"
+#include "../../../Includes/cub3d.h"
 
 //read(fd, NULL, 0) non accepte pour les tests de fsoares
 //if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1 || fd > FD_MAX)
 int	ft_checkread(int fd)
 {
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_MAX)
+	if (fd < 0 || fd > FD_MAX)
 		return (0);
 	return (1);
 }
@@ -27,13 +27,13 @@ char	*read_line(int fd, char *stack)
 	int		reader;
 
 	buffer = NULL;
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = malloc(sizeof(char) * (50 + 1));
 	if (!buffer)
 		return (NULL);
 	reader = 1;
 	while (!(ft_strchr(stack, '\n')) && reader != 0)
 	{
-		reader = read(fd, buffer, BUFFER_SIZE);
+		reader = read(fd, buffer, 50);
 		if (reader == -1)
 		{
 			free(buffer);

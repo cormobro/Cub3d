@@ -1,6 +1,6 @@
-SRCS = $(addprefix Srcs/, main.c utils.c mandelbrot.c checker.c julia.c utils2.c)
+SRCS = $(addprefix Sources/, main.c Utils/ft_putstr_fd.c Utils/ft_strlen.c Utils/gnl/get_next_line.c Utils/gnl/get_next_line_utils.c Checker/arg_checker.c Checker/map_checker.c Checker/map_checker2.c)
 
-NAME = fractol
+NAME = cub3d
 
 INC = -I ./
 
@@ -9,12 +9,12 @@ FLAGS = -Wall -Werror -Wextra
 OBJS = ${SRCS:.c=.o}
 
 ${NAME} : ${OBJS}
-			gcc ${FLAGS} ${INC} $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			gcc ${FLAGS} ${INC} $(OBJS) -o $(NAME)
 
 all : ${NAME}
 
 %.o:%.c
-		gcc ${FLAGS} -Imlx -c $< -o $@
+		gcc ${FLAGS} -c $< -o $@
 
 clean :
 		rm -rf ${OBJS}

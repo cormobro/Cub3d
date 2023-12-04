@@ -1,11 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include <stdio.h>
+# include "utils.h"
 # include "get_next_line.h"
 //# include <mlx.h>
 
@@ -34,6 +30,10 @@ typedef struct s_map
 }	t_map;
 
 int		main(int argc, char **argv);
+bool		arg_checker(int argc, char **argv);
+bool		map_checker(char **argv, t_map *map);
+bool		map_extractor(int fd, t_map *map);
+int		ft_putstr_fd(char const *s, int fd);
 //void	my_mlx_pixel_put(t_complex *data, int x, int y, int color);
 
 #endif

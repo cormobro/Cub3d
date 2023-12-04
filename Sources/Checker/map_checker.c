@@ -1,6 +1,5 @@
 #include "../../Includes/cub3d.h"
 
-//CHECK IF EXTENSION IS .CUB !
 static void	get_path(char *str, char *path)
 {
 	int	i;
@@ -9,7 +8,7 @@ static void	get_path(char *str, char *path)
 	i = 3;
 	if (str[1] == ' ')
 		i--;
-	while (str[i] & str[i] == ' ' && str[i] == '\t')
+	while (str[i] && str[i] == ' ' && str[i] == '\t')
 		i++;
 	j = i;
 	while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
@@ -29,17 +28,17 @@ static void	get_path(char *str, char *path)
 static void	is_valid_line(char *str, t_map *map)
 {
 	if (str[0] == 'N' && str[1] == 'O' && str[2] == ' ' && map->north == NULL)
-		get_path(str, &map->north);
+		get_path(str, map->north);
 	else if (str[0] == 'S' && str[1] == 'O' && str[2] == ' ' && map->south == NULL)
-		get_path(str, &map->south);
+		get_path(str, map->south);
 	else if (str[0] == 'E' && str[1] == 'A' && str[2] == ' ' && map->east == NULL)
-		get_path(str, &map->east);
+		get_path(str, map->east);
 	else if (str[0] == 'W' && str[1] == 'E' && str[2] == ' ' && map->west == NULL)
-		get_path(str, &map->west);
+		get_path(str, map->west);
 	else if (str[0] == 'C' && str[1] == ' ' && map->ceiling == NULL)
-		get_path(str, &map->ceiling);
+		get_path(str, map->ceiling);
 	else if (str[0] == 'F' && str[1] == ' ' && map->floor == NULL)
-		get_path(str, &map->floor);
+		get_path(str, map->floor);
 	if (map->north != NULL && map->south != NULL && map->east != NULL && map->west != NULL
 			&& map->ceiling != NULL && map->floor != NULL)
 		map->check = true;
@@ -71,11 +70,12 @@ static bool	ft_check_map_validity(int fd, t_map *map)
 	map->ceiling = NULL;
 	map->floor = NULL;
 	map->check = false;
-	if (!cub_extractor(int fd, t_map *map))
+	if (!cub_extractor(fd, map))
 		return (false);
+	return (true);
 }
 
-bool	map_checker(char **argvi, t_map *map)
+bool	map_checker(char **argv, t_map *map)
 {
 	int	fd;
 

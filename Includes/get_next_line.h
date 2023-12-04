@@ -17,7 +17,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *left_str, char *buff);
-size_t	ft_strlen(const char *s);
+//size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*get_stack(char *stack);
 char	*get_myline(char *stack);

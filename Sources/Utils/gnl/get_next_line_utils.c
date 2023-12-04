@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/get_next_line.h"
+#include "../../../Includes/cub3d.h"
 
 char	*ft_strjoin(char *stack, char *buffer)
 {
@@ -38,18 +38,6 @@ char	*ft_strjoin(char *stack, char *buffer)
 	res[ft_strlen(stack) + ft_strlen(buffer)] = '\0';
 	free(stack);
 	return (res);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)

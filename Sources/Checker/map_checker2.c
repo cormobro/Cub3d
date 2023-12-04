@@ -2,11 +2,14 @@
 
 bool	map_extractor(int fd, t_map *map)
 {
-	char	*line;
+	//char	*line;
 
-	line = get_next_line(fd);
-	while (line != NULL)
+	(void)map;
+	(void)fd;
+	//line = get_next_line(fd);
+	/*while (line != NULL)
 	{
 		
-	}
+	}*/
+	return (true);
 }
