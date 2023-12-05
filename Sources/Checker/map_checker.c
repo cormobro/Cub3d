@@ -15,7 +15,7 @@ static void	get_path(char *str, char **path)
 		j++;
 	*path = malloc(sizeof(char) * (j - i + 1));
 	if (!path)
-		exit(EXIT_FAILURE);
+		ft_exit("Error: allocation failed");
 	j = -1;
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
@@ -46,7 +46,7 @@ static void	is_valid_line(char *str, t_map *map)
 		while (str[++i])
 		{
 			if (str[i] != ' ' && str[i] != 9 && str[i] != 10 && str[i] != 11 && str[i] != 12 && str[i] != 13)
-				exit(EXIT_FAILURE);
+				ft_exit("Error: syntax error while parsing");
 		}
 	}
 	if (map->north != NULL && map->south != NULL && map->east != NULL && map->west != NULL
@@ -80,7 +80,7 @@ static bool	ft_check_map_validity(int fd, t_map *map)
 {
 	map = malloc(sizeof(t_map) * 1);
 	if (!map)
-		exit(EXIT_FAILURE);
+		ft_exit("Error: allocation failed");
 	map->north = NULL;
 	map->south = NULL;
 	map->east = NULL;
