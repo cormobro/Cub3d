@@ -12,7 +12,7 @@
 
 #include "../../../Includes/cub3d.h"
 
-char	*ft_strjoin(char *stack, char *buffer)
+char	*ft_strjoin_gnl(char *stack, char *buffer)
 {
 	size_t	i;
 	size_t	j;

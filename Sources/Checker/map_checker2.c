@@ -1,23 +1,42 @@
 #include "../../Includes/cub3d.h"
 
-/*bool	map_extractor(int fd, t_map *map)
+static bool	map_precheck(int fd, t_map *map)
 {
-	//char	*line;
+	char	*stack;
+	char	*line;
+	int	i;
 
-	(void)map;
-	(void)fd;
-	//line = get_next_line(fd);
+	stack = NULL;
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		
+		stack = ft_strjoin(stack, line);
+		free(line);
+		line = get_next_line(fd);
 	}
+	i = 0;
+	while (stack[i] && (stack[i] == 48 || ft_isspace(stack[i]) || stack[i] == '\n' || stack[i] == 49 || stack[i] == 69 || stack[i] == 78 || stack[i] == 83 || stack[i] == 87))
+	{
+		if (stack[i] == 69 || stack[i] == 78 || stack[i] == 83 || stack[i] == 87)
+		{
+			if (map->check == true)
+				ft_exit("Error: syntax error in the map\n");
+			map->check = true;
+		}
+		i++;
+	}
+	map->maparray = ft_split(stack, '\n');
 	return (true);
-}*/
+}
 
 bool	map_extractor(int fd, t_map *map)
 {
 	(void)fd;
 
 	sprite_checker(map);
+	map->check = false;
+	if (!map_precheck(fd, map) || map->check == false)
+		ft_exit("Error: syntax error in the map\n");
+	printf("NICE\n");
 	return (true);
 }

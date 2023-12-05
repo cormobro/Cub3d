@@ -16,11 +16,7 @@
 # define FD_MAX 1024
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *left_str, char *buff);
-//size_t	ft_strlen(const char *s);
+char	*ft_strjoin_gnl(char *left_str, char *buff);
 char	*ft_strchr(const char *s, int c);
-char	*get_stack(char *stack);
-char	*get_myline(char *stack);
-char	*read_line(int fd, char *stack);
 
 #endif

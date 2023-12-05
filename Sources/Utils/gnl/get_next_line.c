@@ -13,7 +13,7 @@
 
 //read(fd, NULL, 0) non accepte pour les tests de fsoares
 //if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1 || fd > FD_MAX)
-int	ft_checkread(int fd)
+static int	ft_checkread(int fd)
 {
 	if (fd < 0 || fd > FD_MAX)
 		return (0);
@@ -21,7 +21,7 @@ int	ft_checkread(int fd)
 }
 
 //READ ET AJOUTE PEU A PEU A LA STACK JUSQU A TOMBER SUR UN \N ou EOF.
-char	*read_line(int fd, char *stack)
+static char	*read_line(int fd, char *stack)
 {
 	char	*buffer;
 	int		reader;
@@ -40,14 +40,14 @@ char	*read_line(int fd, char *stack)
 			return (NULL);
 		}
 		buffer[reader] = '\0';
-		stack = ft_strjoin(stack, buffer);
+		stack = ft_strjoin_gnl(stack, buffer);
 	}
 	free(buffer);
 	return (stack);
 }
 
 //EXTRAIT UNE LIGNE TERMINEE PAR \N OU EOF DE LA STACK.
-char	*get_myline(char *stack)
+static char	*get_myline(char *stack)
 {
 	char	*line;
 	int		i;
@@ -76,7 +76,7 @@ char	*get_myline(char *stack)
 }
 
 //MISE A JOUR DE LA STACK APRES EXTRACTION DE LA LIGNE A RENVOYER.
-char	*get_stack(char *stack)
+static char	*get_stack(char *stack)
 {
 	int		i;
 	int		j;
