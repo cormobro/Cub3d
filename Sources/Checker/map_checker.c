@@ -16,12 +16,11 @@ static void	get_path(char *str, char **path)
 	*path = malloc(sizeof(char) * (j - i + 1));
 	if (!path)
 		exit(EXIT_FAILURE);
-	j = 0;
+	j = -1;
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
-			(*path)[j] = str[i];
+			(*path)[++j] = str[i];
 			i++;
-			j++;
 		}
 }
 
