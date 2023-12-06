@@ -35,7 +35,7 @@ bool	map_extractor(int fd, t_map *map)
 
 	sprite_checker(map);
 	map->check = false;
-	if (!map_precheck(fd, map) || map->check == false)
+	if (!map_precheck(fd, map) || map->check == false || !is_surrounded_by_walls(map->maparray))
 		ft_exit("Error: syntax error in the map\n");
 	printf("NICE\n");
 	return (true);

@@ -1,4 +1,4 @@
-#include "../Includes/cub3d.h"
+#include "../../Includes/cub3d.h"
 
 static bool	hole_is_blocked(char **map_array, size_t i, size_t j)
 {

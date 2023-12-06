@@ -17,5 +17,6 @@ bool		arg_checker(int argc, char **argv);
 bool		map_checker(char **argv, t_map *map);
 bool		map_extractor(int fd, t_map *map);
 void		sprite_checker(t_map *map);
+bool		is_surrounded_by_walls(char **map_array);
 
 #endif
