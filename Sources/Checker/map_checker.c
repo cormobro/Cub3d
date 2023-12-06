@@ -22,6 +22,7 @@ static void	get_path(char *str, char **path)
 			(*path)[++j] = str[i];
 			i++;
 		}
+	(*path)[++j] = '\0';
 }
 
 static void	is_valid_line(char *str, t_map *map)
