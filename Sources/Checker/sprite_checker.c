@@ -31,6 +31,7 @@ static void	check_sprite_path(char *path)
 	int	i;
 
 	i = ft_strlen(path);
+	printf("%s\n", path);
 	if (path[i - 1] != 'm' || path[i - 2] != 'p' || path[i - 3] != 'x' || path[i - 4] != '.')
 		ft_exit("Error: sprite error: not a .xpm\n");
 	fd = open(path, O_RDONLY);
