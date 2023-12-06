@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 13:13:22 by febonaer          #+#    #+#             */
-/*   Updated: 2022/10/20 13:15:33 by febonaer         ###   ########.fr       */
+/*   Created: 2023/10/23 16:00:04 by febonaer          #+#    #+#             */
+/*   Updated: 2023/10/23 16:00:06 by febonaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../Includes/cub3d.h"
 
-# define FD_MAX 1024
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	nb;
+	int	neg;
 
-char	*get_next_line(int fd);
-char	*ft_strjoin_gnl(char *left_str, char *buff);
-char	*ft_strchr(const char *s, int c);
-
-#endif
+	i = 0;
+	nb = 0;
+	neg = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = 1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	if (neg)
+		return (-nb);
+	else
+		return (nb);
+}
