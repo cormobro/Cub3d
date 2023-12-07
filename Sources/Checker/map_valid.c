@@ -10,7 +10,7 @@ static bool	ft_isvalidchar(t_map *map, int x, int y)
 	return (true);
 }
 
-static int	count_rows(t_map *map)
+int	count_rows(t_map *map)
 {
 	int	count;
 
@@ -31,6 +31,8 @@ static bool	ft_exist(t_map *map, int x, int	y)
 	if (!map->maparray[x - 1][y] || !ft_isvalidchar(map, x - 1, y))
 		return (false);
 	if (!map->maparray[x + 1][y] || !ft_isvalidchar(map, x + 1, y))
+		return (false);
+	if (ft_strlen(map->maparray[x - 1]) < y || ft_strlen(map->maparray[x + 1]) < y)
 		return (false);
 	return (true);
 }
