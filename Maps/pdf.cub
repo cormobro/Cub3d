@@ -1,14 +1,14 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./Sprites/north.xpm
+SO ./Sprites/south.xpm
+WE ./Sprites/west.xpm
+EA ./Sprites/east.xpm
 
 F 220,100,0
 C 225,30,0
 
 1111111111111111111111
-1000000000000000000001
-1000000000000000000001
+1000000000000000000001 0
+1000000000N00000000001
 1000000000000000000001
 1000111111111111110001
 10001            10001

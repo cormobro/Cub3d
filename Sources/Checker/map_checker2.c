@@ -35,7 +35,7 @@ bool	map_extractor(int fd, t_map *map)
 
 	sprite_checker(map);
 	map->check = false;
-	if (!map_precheck(fd, map) || map->check == false)
+	if (!map_precheck(fd, map) || map->check == false || !map_valid(map))
 		ft_exit("Error: syntax error in the map\n");
 	printf("NICE\n");
 	return (true);
