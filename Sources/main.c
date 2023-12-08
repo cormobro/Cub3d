@@ -3,7 +3,6 @@
 int	main(int argc, char **argv)
 {
 	t_map		*map;
-	t_window	*window;
 
 	map = NULL;
 	window = NULL;
