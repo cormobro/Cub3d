@@ -3,6 +3,8 @@
 
 # include <mlx.h>
 
+# define WIDTH 1080
+# define LENGTH 720
 typedef struct s_window
 {
 	void	*img;
