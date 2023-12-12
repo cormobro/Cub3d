@@ -13,6 +13,9 @@ typedef struct s_map
 	bool	check;
 }	t_map;
 
+bool		ft_iszero(t_map *map, int x, int y);
+bool		ft_recursive_checker(t_map *map, int x, int y);
+bool		map_valid(t_map *map);
 bool		arg_checker(int argc, char **argv);
 bool		map_checker(char **argv, t_map *map);
 bool		map_extractor(int fd, t_map *map);
