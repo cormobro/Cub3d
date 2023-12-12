@@ -6,7 +6,7 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:33:25 by geraudtsers       #+#    #+#             */
-/*   Updated: 2023/12/12 16:03:47 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/12/12 17:16:06 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void init_wall_casting()
 	//receive in arguments x and y start position (double variables), initial direction vector (N,S,E,W) and the camera plane
 	double posX, posY;  //x and y start position vector
 	double dirX, dirY; //initial direction vector pointing inside the screen
-	double planeX, planeY; //surface vector of the computer screen
+	double planeX = 0, planeY = 0.66; //surface vector of the computer screen
 
 	//calculate ray position and direction
 
 	//for each vertical line (X) on screen
-	double rayDirX = posX + dirX + planeX;
-	double rayDirY = posY + dirY + planeY;
+	double cameraX = 2 * x / (double)w - 1; //x is the start position and w is the map width
+	double rayDirX = posX + dirX + planeX * cameraX;
+	double rayDirY = posY + dirY + planeY *cameraX;
 
 	//To rotate a vector, multiply it with the rotation matrix
 
@@ -80,7 +81,7 @@ int	compute_stripe_to_draw(double perWallDist)
 {
 	int stripeHeight;
 	//calculate height of line to draw on screen
-	stripeHeight = (int)(h / perpWallDist);
+	stripeHeight = (int)(h / perpWallDist); //h is the screen height
 
 	//calculate lowest and highest pixel to fill in current stripe
 }
