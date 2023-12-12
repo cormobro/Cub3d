@@ -79,7 +79,7 @@ static bool	cub_extractor(int fd, t_map *map)
 
 static bool	ft_check_map_validity(int fd, t_map *map)
 {
-	map = malloc(sizeof(t_map) * 1);
+	/*map = malloc(sizeof(t_map) * 1);
 	if (!map)
 		ft_exit("Error: allocation failed\n");
 	map->north = NULL;
@@ -88,7 +88,7 @@ static bool	ft_check_map_validity(int fd, t_map *map)
 	map->west = NULL;
 	map->ceiling = NULL;
 	map->floor = NULL;
-	map->check = false;
+	map->check = false;*/
 	if (!cub_extractor(fd, map))
 		return (false);
 	return (true);
