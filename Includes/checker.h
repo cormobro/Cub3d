@@ -18,6 +18,7 @@ typedef struct s_map
 	double	planeY;
 	double	time;
 	double	oldTime;
+	double	perpWallDist;
 	bool	check;
 }	t_map;
 

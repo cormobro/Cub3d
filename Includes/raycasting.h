@@ -2,9 +2,10 @@
 # define RAYCASTING_H
 
 # include <mlx.h>
+# include <math.h>
 
 # define WIDTH 1080
-# define LENGTH 720
+# define HEIGHT 720
 typedef struct s_window
 {
 	void	*img;

@@ -21,6 +21,7 @@ static t_map	*init_map()
 	map->planeY = 0.66;
 	map->time = 0;
 	map->oldTime = 0;
+	map->perpWallDist = 0;
 	map->check = false;
 	return (map);
 }
