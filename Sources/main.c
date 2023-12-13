@@ -1,10 +1,37 @@
 #include "../Includes/cub3d.h"
 
+static t_map	*init_map()
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map) * 1);
+	if (!map)
+		ft_exit("Error: allocation failed\n");
+	map->north = NULL;
+	map->south = NULL;
+	map->east = NULL;
+	map->west = NULL;
+	map->ceiling = NULL;
+	map->floor = NULL;
+	map->posX = 0;
+	map->posY = 0;
+	map->dirX = 0;
+	map->dirY = 0;
+	map->planeX = 0;
+	map->planeY = 0.66;
+	map->time = 0;
+	map->oldTime = 0;
+	map->perpWallDist = 0;
+	map->check = false;
+	return (map);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map		*map;
 
 	map = NULL;
+	map = init_map();
 	if (!arg_checker(argc, argv))
 		return (ft_putstr_fd("Error\nFile extension is not '.cub'\n", 2));
 	if (!map_checker(argv, map))

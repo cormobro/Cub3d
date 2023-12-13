@@ -2,9 +2,10 @@
 # define RAYCASTING_H
 
 # include <mlx.h>
+# include <math.h>
 
 # define WIDTH 1080
-# define LENGTH 720
+# define HEIGHT 720
 typedef struct s_window
 {
 	void	*img;
@@ -25,6 +26,7 @@ typedef struct s_img
 	char	*addr;
 }	t_img;
 
+void	ft_raycasting(t_map *map, t_window *window);
 void	launch_graphic_env(t_map *map);
 void	my_mlx_pixel_put(t_window *data, int x, int y, int color);
 int	ft_close(int keycode, t_window *window);
