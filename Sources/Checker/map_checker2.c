@@ -1,5 +1,17 @@
 #include "../../Includes/cub3d.h"
 
+static void	getPlayerDir(t_map *map, char c)
+{
+	if (c == 69)
+		map->dirX = 1;
+	else if (c == 78)
+		map->dirY = 1;
+	else if (c == 83)
+		map->dirY = -1;
+	else
+		map->dirX = -1;
+}
+
 static bool	map_precheck(int fd, t_map *map)
 {
 	char	*stack;
@@ -21,6 +33,7 @@ static bool	map_precheck(int fd, t_map *map)
 		{
 			if (map->check == true)
 				ft_exit("Error: syntax error in the map\n");
+			getPlayerDir(map, stack[i]);
 			map->check = true;
 		}
 		i++;

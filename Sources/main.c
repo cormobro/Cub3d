@@ -13,6 +13,14 @@ static t_map	*init_map()
 	map->west = NULL;
 	map->ceiling = NULL;
 	map->floor = NULL;
+	map->posX = 0;
+	map->posY = 0;
+	map->dirX = 0;
+	map->dirY = 0;
+	map->planeX = 0;
+	map->planeY = 0.66;
+	map->time = 0;
+	map->oldTime = 0;
 	map->check = false;
 	return (map);
 }

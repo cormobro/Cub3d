@@ -25,6 +25,7 @@ typedef struct s_img
 	char	*addr;
 }	t_img;
 
+void	ft_raycasting(t_map *map, t_window *window);
 void	launch_graphic_env(t_map *map);
 void	my_mlx_pixel_put(t_window *data, int x, int y, int color);
 int	ft_close(int keycode, t_window *window);
