@@ -15,6 +15,8 @@ static bool	dda_algo(t_map *map, double rayDirX, double rayDirY)
 
 	mapX = (int)(map->posX);
 	mapY = (int)(map->posY);
+	printf("mapX %d\n", mapX);
+	printf("mapY %d\n", mapY);
 	hit = 0;
 	//Calcul de la distance X/Y entre deux cases
 	if (rayDirX == 0)
@@ -71,6 +73,7 @@ static bool	dda_algo(t_map *map, double rayDirX, double rayDirY)
 	}
 	else
 		map->perpWallDist = sideDistY - deltaDistY;
+	printf("perpWallDist %f\n", map->perpWallDist);
 	return (true);
 
 }
@@ -81,7 +84,8 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	int	drawStart;
 	int	drawEnd;
 	int	i;
-
+	
+	
 	lineHeight = (int)((double)HEIGHT / map->perpWallDist);
 	drawStart = (double)HEIGHT / 2 - lineHeight / 2;
 	if (drawStart < 0)
@@ -90,12 +94,14 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	if (drawEnd >= HEIGHT)
 		drawEnd = HEIGHT - 1;
 	i = 0;
+	printf("drawStart %d\n", drawStart);
+	printf("drawEnd %d\n", drawEnd);
 	while (i < drawStart)
 	{
 		my_mlx_pixel_put(image, x, i, 0x1c96a3);
 		i++;
 	}
-	i = HEIGHT;
+	i = HEIGHT - 1;
 	while (i > drawEnd)
 	{
 		my_mlx_pixel_put(image, x, i, 0x333945);
@@ -160,6 +166,7 @@ void	ft_raycasting(t_map *map, t_window *window)
 		}
 		x++;
 	}
+	printf("Hello\n");
 	//ICI
 	printf("nouvelle image\n");
 	window->img = img.img;
