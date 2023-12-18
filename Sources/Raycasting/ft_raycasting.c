@@ -160,6 +160,8 @@ void	ft_raycasting(t_map *map, t_window *window)
 		}
 		x++;
 	}
+	//ICI
+	printf("nouvelle image\n");
 	window->img = img.img;
 	mlx_put_image_to_window(window->mlx, window->mlx_win, window->img, 0, 0);
 }
