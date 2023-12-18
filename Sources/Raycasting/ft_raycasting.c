@@ -75,12 +75,12 @@ static bool	dda_algo(t_map *map, double rayDirX, double rayDirY)
 
 }
 
-static void	paintVerticalStripe(t_map *map, t_window *window, int orientation, int x)
+static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x)
 {
 	int	lineHeight;
 	int	drawStart;
 	int	drawEnd;
-	(void)orientation;
+	int	i;
 
 	lineHeight = (int)((double)HEIGHT / map->perpWallDist);
 	drawStart = (double)HEIGHT / 2 - lineHeight / 2;
@@ -89,9 +89,28 @@ static void	paintVerticalStripe(t_map *map, t_window *window, int orientation, i
 	drawEnd = (double)HEIGHT / 2 + lineHeight / 2;
 	if (drawEnd >= HEIGHT)
 		drawEnd = HEIGHT - 1;
+	i = 0;
+	while (i < drawStart)
+	{
+		my_mlx_pixel_put(image, x, i, 0x1c96a3);
+		i++;
+	}
+	i = HEIGHT;
+	while (i > drawEnd)
+	{
+		my_mlx_pixel_put(image, x, i, 0x333945);
+		i--;
+	}
 	while (drawEnd >= drawStart)
 	{
-		my_mlx_pixel_put(window->img, x, drawEnd, 0x0019071A);
+		if (orientation == 0)
+			my_mlx_pixel_put(image, x, drawEnd, 0xab4c20);
+		else if (orientation == 1)
+			my_mlx_pixel_put(image, x, drawEnd, 0x56ab20);
+		else if (orientation == 2)
+			my_mlx_pixel_put(image, x, drawEnd, 0xa219d4);
+		else
+			my_mlx_pixel_put(image, x, drawEnd, 0xfc0008);
 		drawEnd--;
 	}
 }
@@ -102,7 +121,10 @@ void	ft_raycasting(t_map *map, t_window *window)
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
+	t_img	img;
 
+	img.img = mlx_new_image(window->mlx, WIDTH, HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	x = 0;
 	while (x < WIDTH)
 	{
@@ -114,13 +136,13 @@ void	ft_raycasting(t_map *map, t_window *window)
 			if (rayDirX < 0)
 			{
 				//mur ouest
-				paintVerticalStripe(map, window, 0, x);
+				paintVerticalStripe(map, &img, 0, x);
 
 			}
 			else
 			{
 				//mur est
-				paintVerticalStripe(map, window, 1, x);
+				paintVerticalStripe(map, &img, 1, x);
 			}
 		}
 		else
@@ -128,14 +150,18 @@ void	ft_raycasting(t_map *map, t_window *window)
 			if (rayDirY < 0)
 			{
 				//mur sud
-				paintVerticalStripe(map, window, 2, x);
+				paintVerticalStripe(map, &img, 2, x);
 			}
 			else
 			{
 				//mur nord
-				paintVerticalStripe(map, window, 3, x);
+				paintVerticalStripe(map, &img, 3, x);
 			}
 		}
 		x++;
 	}
+	//ICI
+	printf("nouvelle image\n");
+	window->img = img.img;
+	mlx_put_image_to_window(window->mlx, window->mlx_win, window->img, 0, 0);
 }
