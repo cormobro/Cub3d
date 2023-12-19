@@ -18,7 +18,7 @@ static t_map	*init_map()
 	map->dirX = 0;
 	map->dirY = 0;
 	map->planeX = 0;
-	map->planeY = 0.66;
+	map->planeY = 1;
 	map->time = 0;
 	map->oldTime = 0;
 	map->perpWallDist = 0;

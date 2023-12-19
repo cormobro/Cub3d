@@ -8,6 +8,6 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-void	my_mlx_texturing_put()
+/*void	my_mlx_texturing_put()
 {
-}
+}*/

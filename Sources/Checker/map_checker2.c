@@ -3,13 +3,15 @@
 static void	getPlayerDir(t_map *map, char c)
 {
 	if (c == 69)
-		map->dirX = 1;
-	else if (c == 78)
-		map->dirY = 1;
-	else if (c == 83)
 		map->dirY = -1;
-	else
+	else if (c == 78)
 		map->dirX = -1;
+	else if (c == 83)
+		map->dirX = 1;
+	else
+		map->dirY = 1;
+	//printf("dirX %f\n", map->dirX);
+	//printf("dirY %f\n", map->dirY);
 }
 
 static bool	map_precheck(int fd, t_map *map)
