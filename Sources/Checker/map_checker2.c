@@ -5,7 +5,7 @@ static void	getPlayerDir(t_map *map, char c)
 	if (c == 69)
 		map->dirX = 1;
 	else if (c == 78)
-		map->dirY = 1;
+		map->dirX = -1;
 	else if (c == 83)
 		map->dirY = -1;
 	else

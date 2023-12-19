@@ -129,8 +129,8 @@ void	ft_raycasting(t_map *map, t_window *window)
 	while (x < WIDTH)
 	{
 		cameraX = 2 * (double)x / (double)(WIDTH) - 1;
-		rayDirX = (map->dirX + map->planeX) * cameraX;
-		rayDirY = (map->dirY + map->planeY) * cameraX;
+		rayDirX = map->dirX + map->planeX * cameraX;
+		rayDirY = map->dirY + map->planeY * cameraX;
 		if (dda_algo(map, rayDirX, rayDirY) == false)
 		{
 			if (rayDirX < 0)
