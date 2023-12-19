@@ -33,10 +33,10 @@ typedef struct s_img
 void	ft_raycasting(t_map *map, t_window *window);
 void	launch_graphic_env(t_map *map);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-void	my_mlx_texturing_put();
+//void	my_mlx_texturing_put();
 int	ft_handle_inputs(int keycode, t_window *window);
 int	ft_closebis(int keycode, t_window *window);
 int	ft_rotate(int keycode, t_window *window);
-int	ft_handle_inputs2(int keycode, t_window *window);
+//int	ft_handle_inputs2(int keycode, t_window *window);
 
 #endif

@@ -42,6 +42,6 @@ void	launch_graphic_env(t_map *map)
 	//window.img = mlx_xpm_file_to_image(window.mlx, map->north, &window.line_length, &window.endian);
 	//mlx_put_image_to_window(window.mlx, window.mlx_win, window.img, 0, 0);
 	mlx_hook(window.mlx_win, 17, 0, ft_closebis, &window);
-	mlx_key_hook(window.mlx_win, ft_handle_inputs2, &window);
+	mlx_hook(window.mlx_win, 2, (1L << 0), ft_handle_inputs, &window);
 	mlx_loop(window.mlx);
 }

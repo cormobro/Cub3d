@@ -84,8 +84,9 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	int	drawStart;
 	int	drawEnd;
 	int	i;
-	
-	
+
+	if (map->perpWallDist == 0)
+		map->perpWallDist = 1e30;
 	lineHeight = (int)((double)HEIGHT / map->perpWallDist);
 	drawStart = (double)HEIGHT / 2 - lineHeight / 2;
 	if (drawStart < 0)
@@ -95,7 +96,7 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 		drawEnd = HEIGHT - 1;
 	i = 0;
 	//printf("drawStart %d\n", drawStart);
-	//printf("drawEnd %d\n", drawEnd);
+	printf("drawEnd %d\n", drawEnd);
 	while (i < drawStart)
 	{
 		my_mlx_pixel_put(image, x, i, 0x1c96a3);
@@ -135,11 +136,8 @@ void	ft_raycasting(t_map *map, t_window *window)
 	while (x < WIDTH)
 	{
 		cameraX = 2 * (double)x / (double)(WIDTH) - 1;
-		//printf("cameraX %f\n", cameraX);
 		rayDirX = map->dirX + map->planeX * cameraX;
 		rayDirY = map->dirY + map->planeY * cameraX;
-		//printf("rayDirX %f\n", rayDirX);
-		//printf("rayDirY %f\n", rayDirY);
 		if (dda_algo(map, rayDirX, rayDirY) == false)
 		{
 			if (rayDirX < 0)
@@ -169,9 +167,6 @@ void	ft_raycasting(t_map *map, t_window *window)
 		}
 		x++;
 	}
-	printf("Hello\n");
-	//ICI
-	printf("nouvelle image\n");
 	window->img = img.img;
 	mlx_put_image_to_window(window->mlx, window->mlx_win, window->img, 0, 0);
 }

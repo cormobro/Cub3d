@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inputs2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:02:52 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/19 17:31:21 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:36:32 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/cub3d.h"
-
-static bool	is_walkable(char c)
-{
-	//printf("Char C %c\n", c);
-	if (c != '1')
-		return (true);
-	return (false);
-}
 
 int	ft_handle_inputs2(int keycode, t_window *window)
 {
@@ -41,8 +33,6 @@ int	ft_handle_inputs2(int keycode, t_window *window)
 			window->map->posY -= window->map->dirY;
 		printf("DEVANT\n");
 	}
-	printf("PosX %f\n", window->map->posX);
-	printf("PosY %f\n", window->map->posY);
 	ft_raycasting(window->map, window);
 	return (0);
 }
