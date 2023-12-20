@@ -35,7 +35,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		window->map->planeX = window->map->planeX * cos(0.1) - window->map->planeY * sin(0.1);
 		window->map->planeY = oldPlaneX * sin(0.1) + window->map->planeY * cos(0.1);
 		ft_raycasting(window->map, window);
-		printf("%f %f\n", window->map->planeX, window->map->planeY);
 		return (1);
 	}
 	else if (keycode == 124 && window->mlx)
@@ -48,7 +47,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		window->map->planeX = window->map->planeX * cos(-0.1) - window->map->planeY * sin(-0.1);
 		window->map->planeY = oldPlaneX * sin(-0.1) + window->map->planeY * cos(-0.1);
 		ft_raycasting(window->map, window);
-		printf("DROITE\n");
 		return (1);
 	}
 	else if (keycode == 53 && window->mlx)
