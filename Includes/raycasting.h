@@ -9,9 +9,25 @@
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
 
+typedef struct s_index
+{
+	int	x;
+	int	y;
+}	t_index;
+
+typedef struct s_img
+{
+	void		*reference;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	char	*addr;
+}	t_img;
+
 typedef struct s_window
 {
 	t_map	*map;
+	t_img	image[4];
 	void	*img;
 	void	*mlx;
 	void	*mlx_win;
@@ -20,15 +36,6 @@ typedef struct s_window
 	int	line_length;
 	int	endian;
 }	t_window;
-
-typedef struct s_img
-{
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	void	*img;
-	char	*addr;
-}	t_img;
 
 void	ft_raycasting(t_map *map, t_window *window);
 void	launch_graphic_env(t_map *map);

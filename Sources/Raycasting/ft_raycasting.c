@@ -130,8 +130,8 @@ void	ft_raycasting(t_map *map, t_window *window)
 	double	rayDirY;
 	t_img	img;
 
-	img.img = mlx_new_image(window->mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.reference = mlx_new_image(window->mlx, WIDTH, HEIGHT);
+	img.addr = mlx_get_data_addr(img.reference, &img.bits_per_pixel, &img.line_length, &img.endian);
 	x = 0;
 	while (x < WIDTH)
 	{
@@ -167,6 +167,6 @@ void	ft_raycasting(t_map *map, t_window *window)
 		}
 		x++;
 	}
-	window->img = img.img;
+	window->img = img.reference;
 	mlx_put_image_to_window(window->mlx, window->mlx_win, window->img, 0, 0);
 }
