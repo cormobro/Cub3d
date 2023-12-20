@@ -23,7 +23,7 @@ int	ft_closebis(int keycode, t_window *window)
 static bool	is_walkable(char c)
 {
 	printf("Char C %c\n", c);
-	if (c == '3')
+	if (c && (c == '3' || c == '4'))
 		return (true);
 	return (false);
 }
@@ -35,19 +35,19 @@ int	ft_handle_inputs(int keycode, t_window *window)
 
 	if (keycode == 126 && window->mlx)
 	{
-		if (is_walkable(window->map->maparray[(int)(window->map->posX + window->map->dirX + 0.6)][(int)(window->map->posY + 0.6)]) == 1)
-			window->map->posX += window->map->dirX;
-		if (is_walkable(window->map->maparray[(int)(window->map->posX + 0.6)][(int)(window->map->posY + window->map->dirY + 0.6)]))
-			window->map->posY += window->map->dirY;
-		printf("ARRIERE\n");
+		if (is_walkable(window->map->maparray[(int)(window->map->posX + window->map->dirX)][(int)(window->map->posY)]) == 1)
+			window->map->posX += window->map->dirX / 2;
+		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY + window->map->dirY)]))
+			window->map->posY += window->map->dirY / 2;
+		printf("AVANT\n");
 	}
 	else if (keycode == 125 && window->mlx)
 	{
-		if (is_walkable(window->map->maparray[(int)(window->map->posX - window->map->dirX - 0.6)][(int)(window->map->posY - 0.6)]) == 1)
-			window->map->posX -= window->map->dirX;
-		if (is_walkable(window->map->maparray[(int)(window->map->posX - 0.6)][(int)(window->map->posY - window->map->dirY - 0.6)]))
-			window->map->posY -= window->map->dirY;
-		printf("DEVANT\n");
+		if (is_walkable(window->map->maparray[(int)(window->map->posX - window->map->dirX)][(int)(window->map->posY)]) == 1)
+			window->map->posX -= window->map->dirX / 2;
+		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY - window->map->dirY)]))
+			window->map->posY -= window->map->dirY / 2;
+		printf("ARRIERE\n");
 	}
 	else if (keycode == 123 && window->mlx)
 	{

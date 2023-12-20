@@ -96,7 +96,7 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 		drawEnd = HEIGHT - 1;
 	i = 0;
 	//printf("drawStart %d\n", drawStart);
-	printf("drawEnd %d\n", drawEnd);
+	//printf("drawEnd %d\n", drawEnd);
 	while (i < drawStart)
 	{
 		my_mlx_pixel_put(image, x, i, 0x1c96a3);
