@@ -15,8 +15,8 @@ static bool	dda_algo(t_map *map, double rayDirX, double rayDirY)
 
 	mapX = (int)(map->posX);
 	mapY = (int)(map->posY);
-	printf("mapX %d\n", mapX);
-	printf("mapY %d\n", mapY);
+	//printf("mapX %d\n", mapX);
+	//printf("mapY %d\n", mapY);
 	hit = 0;
 	//Calcul de la distance X/Y entre deux cases
 	if (rayDirX == 0)
@@ -84,8 +84,9 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	int	drawStart;
 	int	drawEnd;
 	int	i;
-	
-	
+
+	if (map->perpWallDist == 0)
+		map->perpWallDist = 1e30;
 	lineHeight = (int)((double)HEIGHT / map->perpWallDist);
 	drawStart = (double)HEIGHT / 2 - lineHeight / 2;
 	if (drawStart < 0)
@@ -94,7 +95,7 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	if (drawEnd >= HEIGHT)
 		drawEnd = HEIGHT - 1;
 	i = 0;
-	printf("drawStart %d\n", drawStart);
+	//printf("drawStart %d\n", drawStart);
 	printf("drawEnd %d\n", drawEnd);
 	while (i < drawStart)
 	{
