@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:13:09 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/21 19:19:35 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:28:32 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,13 +143,13 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int x, t_img *texture)
 	y = 0;
 	while (y < drawStart)
 	{
-		my_mlx_pixel_put(image, x, y, 0x1c96a3);
+		my_mlx_pixel_put(image, x, y, (int)map->hexceiling);
 		y++;
 	}
 	y = HEIGHT - 1;
 	while (y > drawEnd)
 	{
-		my_mlx_pixel_put(image, x, y, 0x333945);
+		my_mlx_pixel_put(image, x, y, (int)map->hexfloor);
 		y--;
 	}
 	/*while (drawEnd >= drawStart)
@@ -212,5 +212,4 @@ void	ft_raycasting(t_map *map, t_window *window)
 	}
 	window->img = img.reference;
 	mlx_put_image_to_window(window->mlx, window->mlx_win, window->img, 0, 0);
-	//mlx_put_image_to_window(window->mlx, window->mlx_win, window->image[3].reference, 0, 0);
 }
