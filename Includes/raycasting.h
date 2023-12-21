@@ -3,11 +3,12 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <stdint.h>
 
 # define WIDTH 1080
 # define HEIGHT 720
-# define TEX_WIDTH 64
-# define TEX_HEIGHT 64
+# define TEX_WIDTH 80
+# define TEX_HEIGHT 80
 
 typedef struct s_index
 {
@@ -40,6 +41,7 @@ typedef struct s_window
 void	ft_raycasting(t_map *map, t_window *window);
 void	launch_graphic_env(t_map *map);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		get_pixel_color(t_img *texture, int x, int y);
 //void	my_mlx_texturing_put();
 int	ft_handle_inputs(int keycode, t_window *window);
 int	ft_closebis(int keycode, t_window *window);

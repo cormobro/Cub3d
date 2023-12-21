@@ -10,12 +10,17 @@ typedef struct s_map
 	char	*west;
 	char	*ceiling;
 	char	*floor;
+	int		mapX;
+	int		mapY;
 	double	posX;
 	double	posY;
 	double	dirX;
 	double	dirY;
+	double	rayDirX;
+	double	rayDirY;
 	double	planeX;
 	double	planeY;
+	int		side;
 	double	time;
 	double	oldTime;
 	double	perpWallDist;

@@ -41,6 +41,7 @@ static void	init_image(t_window *window)
 				
 		if (window->image[i].reference == NULL)
 			printf("Error: could not load an image\n");
+		window->image[i].addr = mlx_get_data_addr(window->image[i].reference, &window->image[i].bits_per_pixel, &window->image[i].line_length, &window->image[i].endian);
 		i++;	
 	}
 }
