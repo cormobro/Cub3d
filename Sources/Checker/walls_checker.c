@@ -23,7 +23,6 @@
 
 static bool	find_next_wall(char **map_array, size_t i, size_t j, char type)
 {
-	//printf("%s\n", map_array[i]);
 	while (map_array[i][j])
 	{
 		if (map_array[i][j] == '1')

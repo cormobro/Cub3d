@@ -1,15 +1,5 @@
 #include "../../Includes/cub3d.h"
 
-int	ft_close(int keycode, t_window *window)
-{
-	if (keycode == 53 && window->mlx)
-	{
-		(void)window;
-		ft_exit("Successfully left the game, have a great day!\n");
-	}
-	return (0);
-}
-
 int	ft_closebis(int keycode, t_window *window)
 {
 	if (keycode && window->mlx)
@@ -22,7 +12,6 @@ int	ft_closebis(int keycode, t_window *window)
 
 static bool	is_walkable(char c)
 {
-	printf("Char C %c\n", c);
 	if (c && (c == '3' || c == '4'))
 		return (true);
 	return (false);
@@ -39,7 +28,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 			window->map->posX += window->map->dirX / 2;
 		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY + window->map->dirY)]))
 			window->map->posY += window->map->dirY / 2;
-		printf("AVANT\n");
 	}
 	else if (keycode == 125 && window->mlx)
 	{
@@ -47,7 +35,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 			window->map->posX -= window->map->dirX / 2;
 		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY - window->map->dirY)]))
 			window->map->posY -= window->map->dirY / 2;
-		printf("ARRIERE\n");
 	}
 	else if (keycode == 123 && window->mlx)
 	{
@@ -58,8 +45,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		oldPlaneX = window->map->planeX;
 		window->map->planeX = window->map->planeX * cos(0.1) - window->map->planeY * sin(0.1);
 		window->map->planeY = oldPlaneX * sin(0.1) + window->map->planeY * cos(0.1);
-		//ft_raycasting(window->map, window);
-		printf("%f %f\n", window->map->planeX, window->map->planeY);
 		//return (1);
 	}
 	else if (keycode == 124 && window->mlx)
@@ -71,8 +56,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		oldPlaneX = window->map->planeX;
 		window->map->planeX = window->map->planeX * cos(-0.1) - window->map->planeY * sin(-0.1);
 		window->map->planeY = oldPlaneX * sin(-0.1) + window->map->planeY * cos(-0.1);
-		//ft_raycasting(window->map, window);
-		printf("DROITE\n");
 		//return (1);
 	}
 	else if (keycode == 53 && window->mlx)

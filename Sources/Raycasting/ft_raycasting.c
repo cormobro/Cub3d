@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:13:09 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/21 19:28:32 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:33:29 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int x, t_img *texture)
 	{
 
 		if (orientation == 0)
-			my_mlx_pixel_put(image, x, drawEnd, 0xab4c20);
+			my_mlx_pixel_put(image, x, drawEnd, 0x001edc);
 		else if (orientation == 1)
 			my_mlx_pixel_put(image, x, drawEnd, 0x56ab20);
 		else if (orientation == 2)

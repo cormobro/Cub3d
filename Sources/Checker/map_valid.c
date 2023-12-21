@@ -77,12 +77,11 @@ bool	map_valid(t_map *map)
 			if (map->maparray[x][y] == '0' || map->maparray[x][y] == 'N' || map->maparray[x][y] == 'E' || map->maparray[x][y] == 'S' || map->maparray[x][y] == 'W')
 			{
 				if(!ft_recursive_checker(map, x, y))
-					ft_exit("Error: Invalid map\n");
+					ft_exit("Error\nInvalid map\n");
 			}
 			y++;
 		}
 		x++;
 	}
-	printf("Valid map\n");
 	return (true);
 }

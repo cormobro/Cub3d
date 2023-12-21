@@ -1,6 +1,6 @@
 #include "../../Includes/cub3d.h"
 
-static bool	get_path(char *str, char **path)
+static void	get_path(char *str, char **path)
 {
 	int	i;
 	int	j;
@@ -15,7 +15,7 @@ static bool	get_path(char *str, char **path)
 		j++;
 	*path = malloc(sizeof(char) * (j - i + 1));
 	if (!path)
-		return (false);
+		ft_exit("Error\nAllocation failed\n");
 	j = -1;
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
@@ -23,43 +23,36 @@ static bool	get_path(char *str, char **path)
 			i++;
 		}
 	(*path)[++j] = '\0';
-	return (true);
 }
 
-static bool	is_valid_line(char *str, t_map *map)
+static void	is_valid_line(char *str, t_map *map)
 {
 	int	i;
-	int	check;
 
 	i = -1;
-	check = 0;
-	if (str[0] == 'N' && str[1] == 'O' && str[2] == ' ' && map->north == NULL && get_path(str, &map->north))
-		check = 1;
-	else if (str[0] == 'S' && str[1] == 'O' && str[2] == ' ' && map->south == NULL && get_path(str, &map->south))
-		check = 1;
-	else if (str[0] == 'E' && str[1] == 'A' && str[2] == ' ' && map->east == NULL && get_path(str, &map->east))
-		check = 1;
-	else if (str[0] == 'W' && str[1] == 'E' && str[2] == ' ' && map->west == NULL && get_path(str, &map->west))
-		check = 1;
-	else if (str[0] == 'C' && str[1] == ' ' && map->ceiling == NULL && get_path(str, &map->ceiling))
-		check = 1;
-	else if (str[0] == 'F' && str[1] == ' ' && map->floor == NULL && get_path(str, &map->floor))
-		check = 1;
+	if (str[0] == 'N' && str[1] == 'O' && str[2] == ' ' && map->north == NULL)
+		get_path(str, &map->north);
+	else if (str[0] == 'S' && str[1] == 'O' && str[2] == ' ' && map->south == NULL)
+		get_path(str, &map->south);
+	else if (str[0] == 'E' && str[1] == 'A' && str[2] == ' ' && map->east == NULL)
+		get_path(str, &map->east);
+	else if (str[0] == 'W' && str[1] == 'E' && str[2] == ' ' && map->west == NULL)
+		get_path(str, &map->west);
+	else if (str[0] == 'C' && str[1] == ' ' && map->ceiling == NULL)
+		get_path(str, &map->ceiling);
+	else if (str[0] == 'F' && str[1] == ' ' && map->floor == NULL)
+		get_path(str, &map->floor);
 	else
 	{
 		while (str[++i])
 		{
 			if (str[i] != ' ' && str[i] != 9 && str[i] != 10 && str[i] != 11 && str[i] != 12 && str[i] != 13)
-				return (false);
+				ft_exit("Error\nSyntax error while parsing\n");
 		}
-		check = 1;
 	}
 	if (map->north != NULL && map->south != NULL && map->east != NULL && map->west != NULL
 			&& map->ceiling != NULL && map->floor != NULL)
 		map->check = true;
-	if (check == 1)
-		return (true);
-	return (false);
 }
 
 static bool	cub_extractor(int fd, t_map *map)
@@ -69,16 +62,15 @@ static bool	cub_extractor(int fd, t_map *map)
 	line = get_next_line(fd);
 	while (line != NULL && map->check == false)
 	{
-		if (!is_valid_line(line, map))
-		{
-			free (line);
-			return (false);
-		}
+		is_valid_line(line, map);
 		free (line);
 		line = get_next_line(fd);
 	}
 	if (map->check == false)
+	{
+		printf("map check is false\n");
 		return (false);
+	}
 	//Now that paths are retrieved, check for the map.
 	if (!map_extractor(fd, map))
 		return (false);
@@ -87,6 +79,16 @@ static bool	cub_extractor(int fd, t_map *map)
 
 static bool	ft_check_map_validity(int fd, t_map *map)
 {
+	/*map = malloc(sizeof(t_map) * 1);
+	if (!map)
+		ft_exit("Error: allocation failed\n");
+	map->north = NULL;
+	map->south = NULL;
+	map->east = NULL;
+	map->west = NULL;
+	map->ceiling = NULL;
+	map->floor = NULL;
+	map->check = false;*/
 	if (!cub_extractor(fd, map))
 		return (false);
 	return (true);

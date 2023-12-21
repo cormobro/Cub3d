@@ -12,6 +12,8 @@ typedef struct s_map
 	char	*floor;
 	int		mapX;
 	int		mapY;
+	double	hexfloor;
+	double	hexceiling;
 	double	posX;
 	double	posY;
 	double	dirX;
