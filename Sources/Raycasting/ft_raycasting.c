@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:13:09 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/21 19:33:29 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:43:10 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static bool	dda_algo(t_map *map)
 
 	map->mapX = (int)(map->posX);
 	map->mapY = (int)(map->posY);
-	//printf("mapX %d\n", mapX);
-	//printf("mapY %d\n", mapY);
 	hit = 0;
 	//Calcul de la distance X/Y entre deux cases
 	if (map->rayDirX == 0)
@@ -71,7 +69,6 @@ static bool	dda_algo(t_map *map)
 			map->mapY += stepY;
 			map->side = 1;
 		}
-		//INTERCHANGER X ET Y ?
 		if (map->maparray[map->mapX][map->mapY] == '1')
 			hit = 1;
 	}
@@ -82,7 +79,6 @@ static bool	dda_algo(t_map *map)
 	}
 	else
 		map->perpWallDist = sideDistY - deltaDistY;
-	//printf("perpWallDist %f\n", map->perpWallDist);
 	return (true);
 
 }
@@ -115,7 +111,6 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int x, t_img *texture)
 	else
 		wallX = map->posX + map->perpWallDist * map->rayDirX;
 	wallX -= floor((wallX));
-	//printf("wallX %f\nraydir %f\n", wallX, map->rayDirX);
 	//x coordinate on the texture
 	texX = (int)(wallX * TEX_WIDTH);
 	if (map->side == 0 && map->rayDirX > 0)
@@ -127,16 +122,12 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int x, t_img *texture)
 	//calculate position on the y axis in the texture we are
 	texPos = (drawStart - HEIGHT / 2 + lineHeight / 2) * step;
 	y = drawStart;
-	//printf("drawStart%d\n", drawStart);
-	//printf("drawEnd%d\n", drawEnd);
 	while (y <= drawEnd)
 	{
-		//printf("Y%d\n", y);
 		//cast the texture coordinate to integer and mask in case of overflow
 		texY = (int)texPos;
 		texPos += step;
 		color = get_pixel_color(texture, texX, texY);
-		//printf("Color %06x\n", color);
 		my_mlx_pixel_put(image, x, y, color);
 		y++;
 	}
@@ -152,19 +143,6 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int x, t_img *texture)
 		my_mlx_pixel_put(image, x, y, (int)map->hexfloor);
 		y--;
 	}
-	/*while (drawEnd >= drawStart)
-	{
-
-		if (orientation == 0)
-			my_mlx_pixel_put(image, x, drawEnd, 0x001edc);
-		else if (orientation == 1)
-			my_mlx_pixel_put(image, x, drawEnd, 0x56ab20);
-		else if (orientation == 2)
-			my_mlx_pixel_put(image, x, drawEnd, 0xa219d4);
-		else
-			my_mlx_pixel_put(image, x, drawEnd, 0xfc0008);
-		drawEnd--;
-	}*/
 }
 
 void	ft_raycasting(t_map *map, t_window *window)
@@ -186,13 +164,13 @@ void	ft_raycasting(t_map *map, t_window *window)
 			if (map->rayDirX < 0)
 			{
 				//mur ouest
-				paintVerticalStripe(map, &img, x, &window->image[0]);
+				paintVerticalStripe(map, &img, x, &window->image[2]);
 
 			}
 			else
 			{
 				//mur est
-				paintVerticalStripe(map, &img, x, &window->image[1]);
+				paintVerticalStripe(map, &img, x, &window->image[3]);
 			}
 		}
 		else
@@ -200,12 +178,12 @@ void	ft_raycasting(t_map *map, t_window *window)
 			if (map->rayDirY < 0)
 			{
 				//mur sud
-				paintVerticalStripe(map, &img, x, &window->image[2]);
+				paintVerticalStripe(map, &img, x, &window->image[1]);
 			}
 			else
 			{
 				//mur nord
-				paintVerticalStripe(map, &img, x, &window->image[3]);
+				paintVerticalStripe(map, &img, x, &window->image[0]);
 			}
 		}
 		x++;

@@ -24,6 +24,7 @@ int	ft_handle_inputs(int keycode, t_window *window)
 
 	if (keycode == 126 && window->mlx)
 	{
+		//go backward
 		if (is_walkable(window->map->maparray[(int)(window->map->posX + window->map->dirX)][(int)(window->map->posY)]) == 1)
 			window->map->posX += window->map->dirX / 2;
 		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY + window->map->dirY)]))
@@ -31,6 +32,7 @@ int	ft_handle_inputs(int keycode, t_window *window)
 	}
 	else if (keycode == 125 && window->mlx)
 	{
+		//go forward
 		if (is_walkable(window->map->maparray[(int)(window->map->posX - window->map->dirX)][(int)(window->map->posY)]) == 1)
 			window->map->posX -= window->map->dirX / 2;
 		if (is_walkable(window->map->maparray[(int)(window->map->posX)][(int)(window->map->posY - window->map->dirY)]))
@@ -45,7 +47,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		oldPlaneX = window->map->planeX;
 		window->map->planeX = window->map->planeX * cos(0.1) - window->map->planeY * sin(0.1);
 		window->map->planeY = oldPlaneX * sin(0.1) + window->map->planeY * cos(0.1);
-		//return (1);
 	}
 	else if (keycode == 124 && window->mlx)
 	{
@@ -56,7 +57,6 @@ int	ft_handle_inputs(int keycode, t_window *window)
 		oldPlaneX = window->map->planeX;
 		window->map->planeX = window->map->planeX * cos(-0.1) - window->map->planeY * sin(-0.1);
 		window->map->planeY = oldPlaneX * sin(-0.1) + window->map->planeY * cos(-0.1);
-		//return (1);
 	}
 	else if (keycode == 53 && window->mlx)
 	{
