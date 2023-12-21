@@ -10,14 +10,14 @@ typedef struct s_map
 	char	*west;
 	char	*ceiling;
 	char	*floor;
+	double	hexfloor;
+	double	hexceiling;
 	double	posX;
 	double	posY;
 	double	dirX;
 	double	dirY;
 	double	planeX;
 	double	planeY;
-	double	time;
-	double	oldTime;
 	double	perpWallDist;
 	bool	check;
 }	t_map;

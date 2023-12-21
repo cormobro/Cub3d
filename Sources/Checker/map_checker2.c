@@ -44,7 +44,7 @@ static bool	map_precheck(int fd, t_map *map)
 		if (stack[i] == 69 || stack[i] == 78 || stack[i] == 83 || stack[i] == 87)
 		{
 			if (map->check == true)
-				ft_exit("Error: syntax error in the map\n");
+				ft_exit("Error\nSyntax error in the map\n");
 			getPlayerDir(map, stack[i]);
 			map->check = true;
 		}
@@ -61,7 +61,6 @@ bool	map_extractor(int fd, t_map *map)
 	sprite_checker(map);
 	map->check = false;
 	if (!map_precheck(fd, map) || map->check == false || !map_valid(map))
-		ft_exit("Error: syntax error in the map\n");
-	printf("NICE\n");
+		ft_exit("Error\nSyntax error in the map\n");
 	return (true);
 }

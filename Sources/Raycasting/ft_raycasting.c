@@ -99,19 +99,19 @@ static void	paintVerticalStripe(t_map *map, t_img *image, int orientation, int x
 	//printf("drawEnd %d\n", drawEnd);
 	while (i < drawStart)
 	{
-		my_mlx_pixel_put(image, x, i, 0x1c96a3);
+		my_mlx_pixel_put(image, x, i, (int)map->hexceiling);
 		i++;
 	}
 	i = HEIGHT - 1;
 	while (i > drawEnd)
 	{
-		my_mlx_pixel_put(image, x, i, 0x333945);
+		my_mlx_pixel_put(image, x, i, (int)map->hexfloor);
 		i--;
 	}
 	while (drawEnd >= drawStart)
 	{
 		if (orientation == 0)
-			my_mlx_pixel_put(image, x, drawEnd, 0xab4c20);
+			my_mlx_pixel_put(image, x, drawEnd, 0x001edc);
 		else if (orientation == 1)
 			my_mlx_pixel_put(image, x, drawEnd, 0x56ab20);
 		else if (orientation == 2)
