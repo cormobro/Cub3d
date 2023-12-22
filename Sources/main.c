@@ -18,16 +18,17 @@ static void	ft_free_exit(char *str, t_map *map)
 			free (map->floor);
 		free (map);
 	}
-	ft_exit(str);
+	ft_putstr_fd(str, 2);
+	exit(EXIT_FAILURE);
 }
 
-static t_map	*init_map()
+static t_map	*init_map(void)
 {
 	t_map	*map;
 
 	map = malloc(sizeof(t_map) * 1);
 	if (!map)
-		ft_exit("Error\nAllocation failed\n");
+		exit(EXIT_FAILURE);
 	map->north = NULL;
 	map->south = NULL;
 	map->east = NULL;

@@ -2,10 +2,13 @@
 
 int	ft_closebis(int keycode, t_window *window)
 {
+	t_map *map;
+
+	map = window->map;
 	if (keycode && window->mlx)
 	{
 		(void)window;
-		ft_exit("Successfully left the game, have a great day!\n");
+		ft_exit("Successfully left the game, have a great day!\n", map);
 	}
 	return (0);
 }
@@ -21,7 +24,9 @@ int	ft_handle_inputs(int keycode, t_window *window)
 {
 	double	oldDirX;
 	double	oldPlaneX;
+	t_map	*map;
 
+	map = window->map;
 	if (keycode == 126 && window->mlx)
 	{
 		if (is_walkable(window->map->maparray[(int)(window->map->posX + window->map->dirX)][(int)(window->map->posY)]) == 1)
@@ -61,7 +66,7 @@ int	ft_handle_inputs(int keycode, t_window *window)
 	else if (keycode == 53 && window->mlx)
 	{
 		(void)window;
-		ft_exit("Successfully left the game, have a great day!\n");
+		ft_exit("Successfully left the game, have a great day!\n", map);
 	}
 	ft_raycasting(window->map, window);
 	return (0);

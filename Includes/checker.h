@@ -1,27 +1,6 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
-typedef struct s_map
-{
-	char	**maparray;
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	char	*ceiling;
-	char	*floor;
-	double	hexfloor;
-	double	hexceiling;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	perpWallDist;
-	bool	check;
-}	t_map;
-
 bool		ft_iszero(t_map *map, int x, int y);
 bool		ft_recursive_checker(t_map *map, int x, int y);
 bool		map_valid(t_map *map);
