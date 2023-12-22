@@ -1,6 +1,7 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
+<<<<<<< HEAD
 typedef struct s_map
 {
 	char	**maparray;
@@ -36,6 +37,8 @@ typedef struct s_map
 	bool	check;
 }	t_map;
 
+=======
+>>>>>>> map_checker_raycasting
 bool		ft_iszero(t_map *map, int x, int y);
 bool		ft_recursive_checker(t_map *map, int x, int y);
 bool		map_valid(t_map *map);

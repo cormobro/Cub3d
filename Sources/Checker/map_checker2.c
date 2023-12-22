@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_checker2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/22 14:33:20 by febonaer          #+#    #+#             */
+/*   Updated: 2023/12/22 15:13:35 by febonaer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/cub3d.h"
 
-static void	getPlayerDir(t_map *map, char c)
+static void	getplayerdir(t_map *map, char c)
 {
 	if (c == 69)
 	{
@@ -24,43 +36,62 @@ static void	getPlayerDir(t_map *map, char c)
 	}
 }
 
-static bool	map_precheck(int fd, t_map *map)
+static bool	map_precheck2(char *stack, t_map *map)
 {
-	char	*stack;
-	char	*line;
 	int	i;
 
-	stack = NULL;
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		stack = ft_strjoin(stack, line);
-		free(line);
-		line = get_next_line(fd);
-	}
 	i = 0;
-	while (stack[i] && (stack[i] == 48 || ft_isspace(stack[i]) || stack[i] == '\n' || stack[i] == 49 || stack[i] == 69 || stack[i] == 78 || stack[i] == 83 || stack[i] == 87))
+	while (stack[i] && (stack[i] == 48 || ft_isspace(stack[i])
+			|| stack[i] == '\n' || stack[i] == 49 || stack[i] == 69
+			|| stack[i] == 78 || stack[i] == 83 || stack[i] == 87))
 	{
-		if (stack[i] == 69 || stack[i] == 78 || stack[i] == 83 || stack[i] == 87)
+		if (stack[i] == 69 || stack[i] == 78
+			|| stack[i] == 83 || stack[i] == 87)
 		{
 			if (map->check == true)
-				ft_exit("Error\nSyntax error in the map\n");
-			getPlayerDir(map, stack[i]);
+				return (false);
+			getplayerdir(map, stack[i]);
 			map->check = true;
 		}
 		i++;
 	}
+	return (true);
+}
+
+static bool	map_precheck(int fd, t_map *map)
+{
+	char	*stack;
+	char	*line;
+
+	stack = NULL;
+	line = get_next_line(fd);
+	if (!line)
+		ft_exit("Error\nAllocation failed\n", map);
+	while (line != NULL)
+	{
+		stack = ft_strjoin(stack, line);
+		if (!stack)
+			ft_exit("Error\nAllocation failed\n", map);
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (!map_precheck2(stack, map))
+	{
+		free(stack);
+		return (false);
+	}
 	map->maparray = ft_split(stack, '\n');
+	if (!map->maparray)
+		ft_exit("Error\nAllocation failed\n", map);
+	free(stack);
 	return (true);
 }
 
 bool	map_extractor(int fd, t_map *map)
 {
-	(void)fd;
-
 	sprite_checker(map);
 	map->check = false;
 	if (!map_precheck(fd, map) || map->check == false || !map_valid(map))
-		ft_exit("Error\nSyntax error in the map\n");
+		ft_exit("Error\nSyntax error in the map\n", map);
 	return (true);
 }

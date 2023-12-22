@@ -72,7 +72,7 @@ void	launch_graphic_env(t_map *map)
 	if (window.mlx == NULL)
 	{
 		(void)window;
-		ft_exit("Error\nFailed to launch the MLX\n");
+		ft_exit("Error\nFailed to launch the MLX\n", map);
 	}
 	window.mlx_win = mlx_new_window(window.mlx, WIDTH, HEIGHT, "CUB3D");
 	init_image(&window);
