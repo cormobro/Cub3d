@@ -34,6 +34,7 @@ static void	check_sprite_rgb(char *rgb, double *hex, int r, t_map *map)
 	int		g;
 	char	**colors;
 
+	g = 0;
 	colors = ft_minisplit(rgb, map);
 	i = -1;
 	while (colors[++i])
@@ -73,10 +74,8 @@ static void	check_sprite_path(char *path, t_map *map)
 void	sprite_checker(t_map *map)
 {
 	int	r;
-	int	g;
 
 	r = 0;
-	g = 0;
 	check_sprite_path(map->north, map);
 	check_sprite_path(map->south, map);
 	check_sprite_path(map->east, map);

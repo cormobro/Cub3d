@@ -4,13 +4,18 @@ void	ft_exit(char *str, t_map *map)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (map != NULL)
 	{
-		if (map->maparray != NULL)
+		if (map->maparray != NULL && map->maparray[i] != NULL)
 		{
-			while (map->maparray[++i] != NULL)
+			while (map->maparray[i] != NULL)
+			{
+				//printf("i:%d\n%s\n", i, map->maparray[i]);
 				free(map->maparray[i]);
+				i++;
+			}
+			free(map->maparray);
 		}
 		if (map->north != NULL)
 			free(map->north);

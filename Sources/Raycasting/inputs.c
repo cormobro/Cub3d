@@ -2,13 +2,14 @@
 
 int	ft_closebis(int keycode, t_window *window)
 {
-	t_map *map;
+	//t_map *map;
 
-	map = window->map;
+	//map = window->map;
 	if (keycode && window->mlx)
 	{
 		(void)window;
-		ft_exit("Successfully left the game, have a great day!\n", map);
+		exit(ft_putstr_fd("Successfully left the game, have a great day!\n", 2));
+		//ft_exit("Successfully left the game, have a great day!\n", map);
 	}
 	return (0);
 }
