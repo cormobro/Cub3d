@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/22 17:04:52 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/12/22 17:40:33 by gt-serst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Includes/cub3d.h"
 
 static void	ft_free_exit(char *str, t_map *map)
@@ -22,23 +34,8 @@ static void	ft_free_exit(char *str, t_map *map)
 	exit(EXIT_FAILURE);
 }
 
-static t_map	*init_map(void)
+static void	init_raycast(t_map *map)
 {
-	t_map	*map;
-
-	map = malloc(sizeof(t_map) * 1);
-	if (!map)
-		exit(EXIT_FAILURE);
-	map->north = NULL;
-	map->south = NULL;
-	map->east = NULL;
-	map->west = NULL;
-	map->ceiling = NULL;
-	map->floor = NULL;
-	map->map_x = 0;
-	map->map_y = 0;
-	map->hexfloor = 0;
-	map->hexceiling = 0;
 	map->pos_x = 0;
 	map->pos_y = 0;
 	map->dir_x = 0;
@@ -59,12 +56,32 @@ static t_map	*init_map(void)
 	map->old_time = 0;
 	map->perp_wall_dist = 0;
 	map->check = false;
+}
+
+static t_map	*init_map(void)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map) * 1);
+	if (!map)
+		exit(EXIT_FAILURE);
+	map->north = NULL;
+	map->south = NULL;
+	map->east = NULL;
+	map->west = NULL;
+	map->ceiling = NULL;
+	map->floor = NULL;
+	map->map_x = 0;
+	map->map_y = 0;
+	map->hexfloor = 0;
+	map->hexceiling = 0;
+	init_raycast(map);
 	return (map);
 }
 
 int	main(int argc, char **argv)
 {
-	t_map		*map;
+	t_map	*map;
 
 	map = NULL;
 	map = init_map();

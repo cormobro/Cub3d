@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/22 17:14:23 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/12/22 17:14:25 by gt-serst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_H
 # define UTILS_H
 
@@ -42,12 +54,12 @@ typedef struct s_map
 	bool	check;
 }	t_map;
 
-int	ft_strlen(const char *str);
-int	ft_putstr_fd(char const *s, int fd);
+int		ft_strlen(const char *str);
+int		ft_putstr_fd(char const *s, int fd);
 char	**ft_split(char const *str, char c);
-int	ft_isnumber(char *s);
-int	ft_atoi(const char *str);
-int	ft_isspace(int c);
+int		ft_isnumber(char *s);
+int		ft_atoi(const char *str);
+int		ft_isspace(int c);
 void	ft_exit(char *str, t_map *map);
 char	*ft_strjoin(char *s1, char const *s2);
 

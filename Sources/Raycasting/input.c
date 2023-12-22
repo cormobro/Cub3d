@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:39:52 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 16:00:38 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:30:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_handle_input(int keycode, t_window *window)
 		(void)window;
 		ft_exit("Successfully left the game, have a great day!\n", map);
 	}
+	mlx_destroy_image(window->mlx, window->img);
 	ft_raycasting(window->map, window);
 	return (0);
 }
