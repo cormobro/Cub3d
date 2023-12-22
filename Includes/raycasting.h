@@ -62,5 +62,7 @@ void	rotate_left(t_window *window);
 void	rotate_right(t_window *window);
 int		ft_closebis(int keycode, t_window *window);
 int		ft_rotate(int keycode, t_window *window);
+void	strafe_right(t_window *window);
+void	strafe_left(t_window *window);
 
 #endif

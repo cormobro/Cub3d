@@ -34,14 +34,18 @@ int	ft_handle_input(int keycode, t_window *window)
 	t_map	*map;
 
 	map = window->map;
-	if (keycode == 126 && window->mlx)
+	if ((keycode == 126 || keycode == 13) && window->mlx)
 		move_backward(window);
-	else if (keycode == 125 && window->mlx)
+	else if ((keycode == 125 || keycode == 1) && window->mlx)
 		move_forward(window);
 	else if (keycode == 123 && window->mlx)
 		rotate_left(window);
 	else if (keycode == 124 && window->mlx)
 		rotate_right(window);
+	else if (keycode == 2 && window->mlx)
+		strafe_right(window);
+	else if (keycode == 0 && window->mlx)
+		strafe_left(window);
 	else if (keycode == 53 && window->mlx)
 	{
 		(void)window;
