@@ -6,7 +6,7 @@
 /*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:20 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/22 14:33:22 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:13:35 by febonaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static bool	map_precheck(int fd, t_map *map)
 	map->maparray = ft_split(stack, '\n');
 	if (!map->maparray)
 		ft_exit("Error\nAllocation failed\n", map);
+	free(stack);
 	return (true);
 }
 

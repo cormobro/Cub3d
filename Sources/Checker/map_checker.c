@@ -6,7 +6,7 @@
 /*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:10 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/22 14:33:11 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:16:26 by febonaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ static bool	cub_extractor(int fd, t_map *map)
 		free (line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	if (map->check == false)
 		return (false);
 	if (!map_extractor(fd, map))

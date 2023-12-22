@@ -6,7 +6,7 @@
 /*   By: fbonaert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 13:44:14 by fbonaert          #+#    #+#             */
-/*   Updated: 2022/04/12 16:48:00 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:08:42 by febonaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	j_len(char const *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*res;
 	int		i;
@@ -46,5 +46,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	res[i + j] = '\0';
+	free(s1);
 	return (res);
 }

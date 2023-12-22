@@ -34,6 +34,6 @@ int	ft_isnumber(char *s);
 int	ft_atoi(const char *str);
 int	ft_isspace(int c);
 void	ft_exit(char *str, t_map *map);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 
 #endif
