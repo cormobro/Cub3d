@@ -19,7 +19,6 @@ void	strafe_right(t_window *window)
 
 	newdirx = window->map->dir_y;
 	newdiry = window->map->dir_x * - 1;
-	printf("1:%c\n2:%c\n", window->map->maparray[(int)(window->map->pos_x + newdiry)][(int)(window->map->pos_y)], window->map->maparray[(int)(window->map->pos_x)][(int)(window->map->pos_y + newdiry)]);
 	if (is_walkable(window->map->maparray[(int)(window->map->pos_x
 		+ newdiry)][(int)(window->map->pos_y)]) == 1)
 		window->map->pos_x += newdirx / 10;

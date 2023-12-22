@@ -1,4 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/22 17:05:32 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/12/22 17:39:12 by gt-serst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/cub3d.h"
+
+static void	ft_free_path(t_map *map)
+{
+	if (map->north != NULL)
+		free(map->north);
+	if (map->south != NULL)
+		free(map->south);
+	if (map->east != NULL)
+		free(map->east);
+	if (map->west != NULL)
+		free(map->west);
+	if (map->ceiling != NULL)
+		free(map->ceiling);
+	if (map->floor != NULL)
+		free(map->floor);
+}
 
 void	ft_exit(char *str, t_map *map)
 {
@@ -11,24 +39,12 @@ void	ft_exit(char *str, t_map *map)
 		{
 			while (map->maparray[i] != NULL)
 			{
-				//printf("i:%d\n%s\n", i, map->maparray[i]);
 				free(map->maparray[i]);
 				i++;
 			}
 			free(map->maparray);
 		}
-		if (map->north != NULL)
-			free(map->north);
-		if (map->south != NULL)
-			free(map->south);
-		if (map->east != NULL)
-			free(map->east);
-		if (map->west != NULL)
-			free(map->west);
-		if (map->ceiling != NULL)
-			free(map->ceiling);
-		if (map->floor != NULL)
-			free(map->floor);
+		ft_free_path(map);
 		free(map);
 	}
 	ft_putstr_fd(str, 2);
