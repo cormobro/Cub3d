@@ -12,7 +12,7 @@ ifeq ($(UNAME_P),arm)
         MLXINC = -Imlx
     endif
 
-SRCS = $(addprefix Sources/, main.c Utils/ft_putstr_fd.c Utils/ft_strlen.c Utils/gnl/get_next_line.c Utils/gnl/get_next_line_utils.c Utils/ft_strjoin.c Utils/ft_exit.c Utils/ft_isspace.c Utils/ft_split.c Utils/ft_isnumber.c Utils/ft_atoi.c Checker/arg_checker.c Checker/map_checker.c Checker/map_checker2.c Checker/sprite_checker.c Checker/map_valid.c Raycasting/inputs.c Raycasting/launch_graphic_env.c Raycasting/my_mlx_pixel_put.c Raycasting/ft_raycasting.c)
+SRCS = $(addprefix Sources/, main.c Utils/ft_putstr_fd.c Utils/ft_strlen.c Utils/gnl/get_next_line.c Utils/gnl/get_next_line_utils.c Utils/ft_strjoin.c Utils/ft_exit.c Utils/ft_isspace.c Utils/ft_split.c Utils/ft_isnumber.c Utils/ft_atoi.c Checker/arg_checker.c Checker/map_checker.c Checker/map_checker2.c Checker/sprite_checker.c Checker/map_valid.c Raycasting/input.c Raycasting/launch_graphic_env.c Raycasting/my_mlx_pixel_put.c Raycasting/ft_raycasting.c Raycasting/dda.c Raycasting/dda_utils.c Raycasting/paint_stripe.c Raycasting/paint_stripe_utils.c Raycasting/move.c Raycasting/rotate.c)
 
 NAME = cub3d
 

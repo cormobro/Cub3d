@@ -4,23 +4,23 @@ static void	getPlayerDir(t_map *map, char c)
 {
 	if (c == 69)
 	{
-		map->planeY = 0;
-		map->planeX = 0.66;
-		map->dirY = 1;
+		map->plane_y = 0;
+		map->plane_x = 0.66;
+		map->dir_y = 1;
 	}
 	else if (c == 78)
-		map->dirX = -1;
+		map->dir_x = -1;
 	else if (c == 83)
 	{
-		map->dirX = 1;
-		map->planeX = 0;
-		map->planeY = -0.66;
+		map->dir_x = 1;
+		map->plane_x = 0;
+		map->plane_y = -0.66;
 	}
 	else
 	{
-		map->planeY = 0;
-		map->planeX = -0.66;
-		map->dirY = -1;
+		map->plane_y = 0;
+		map->plane_x = -0.66;
+		map->dir_y = -1;
 	}
 }
 

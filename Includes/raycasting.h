@@ -39,10 +39,27 @@ typedef struct s_window
 }	t_window;
 
 void	ft_raycasting(t_map *map, t_window *window);
+void	dda_algo(t_map *map);
+double	get_delta_dist_x(t_map *map);
+double	get_delta_dist_y(t_map *map);
+double	get_side_dist_x(t_map *map, double delta_dist_x);
+double	get_side_dist_y(t_map *map, double delta_dist_y);
+bool	compute_perp_wall_dist(t_map *map);
+void	paint_vertical_stripe(t_map *map, t_img *image,
+	int x, t_img *texture);
+int		get_tex_x_coordinate(t_map *map);
+int		get_tex_y_coordinate(t_map *map, double step);
+int		get_draw_start(int line_height);
+int		get_draw_end(int line_height);
 void	launch_graphic_env(t_map *map);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		get_pixel_color(t_img *texture, int x, int y);
-int		ft_handle_inputs(int keycode, t_window *window);
+int		ft_handle_input(int keycode, t_window *window);
+bool	is_walkable(char c);
+void	move_backward(t_window *window);
+void	move_forward(t_window *window);
+void	rotate_left(t_window *window);
+void	rotate_right(t_window *window);
 int		ft_closebis(int keycode, t_window *window);
 int		ft_rotate(int keycode, t_window *window);
 
