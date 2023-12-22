@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite_checker.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/22 14:33:44 by febonaer          #+#    #+#             */
+/*   Updated: 2023/12/22 14:48:10 by febonaer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/cub3d.h"
 
 static unsigned int	creatergb(int r, int g, int b)
@@ -5,15 +17,24 @@ static unsigned int	creatergb(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
-static void	check_sprite_rgb(char *rgb, double *hex, int r, int g, t_map *map)
+static char	**ft_minisplit(char *rgb, t_map *map)
 {
-	int		i;
-	int		num;
 	char	**colors;
 
 	colors = ft_split(rgb, ',');
 	if (!colors)
 		ft_exit("Error\nAllocation failed\n", map);
+	return (colors);
+}
+
+static void	check_sprite_rgb(char *rgb, double *hex, int r, t_map *map)
+{
+	int		i;
+	int		num;
+	int		g;
+	char	**colors;
+
+	colors = ft_minisplit(rgb, map);
 	i = -1;
 	while (colors[++i])
 	{
@@ -60,6 +81,6 @@ void	sprite_checker(t_map *map)
 	check_sprite_path(map->south, map);
 	check_sprite_path(map->east, map);
 	check_sprite_path(map->west, map);
-	check_sprite_rgb(map->ceiling, &map->hexceiling, r, g, map);
-	check_sprite_rgb(map->floor, &map->hexfloor, r, g, map);
+	check_sprite_rgb(map->ceiling, &map->hexceiling, r, map);
+	check_sprite_rgb(map->floor, &map->hexfloor, r, map);
 }
