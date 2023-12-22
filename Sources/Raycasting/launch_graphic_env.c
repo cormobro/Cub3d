@@ -55,7 +55,10 @@ static void	init_image(t_window *window)
 				map->east, &window->image[i].line_length, &window->image[i].endian);
 
 		if (window->image[i].reference == NULL)
-			ft_exit("Error: could not load an image\n");
+		{
+			(void)window;
+			ft_exit("Error: could not load an image\n", window->map);
+		}
 		window->image[i].addr = mlx_get_data_addr(window->image[i].reference,
 			&window->image[i].bits_per_pixel, &window->image[i].line_length, &window->image[i].endian);
 		i++;
