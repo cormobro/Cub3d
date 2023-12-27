@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:10:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/27 12:31:21 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:16:33 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	find_player_coords(t_map *map)
 		{
 			if (map->maparray[x][y] == '4')
 			{
-				map->pos_x = (double)x;
-				map->pos_y = (double)y;
+				map->pos_x = (double)x + 0.5;
+				map->pos_y = (double)y + 0.5;
 				break ;
 			}
 			y++;
