@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 17:15:25 by gt-serst          #+#    #+#              #
-#    Updated: 2023/12/22 17:18:10 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/12/27 13:34:09 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ NAME = cub3D
 
 INC = -I ./
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 OBJS = ${SRCS:.c=.o}
 

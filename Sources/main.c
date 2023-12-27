@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:04:52 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 17:40:33 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:47:29 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static t_map	*init_map(void)
 	map = malloc(sizeof(t_map) * 1);
 	if (!map)
 		exit(EXIT_FAILURE);
+	map->maparray = NULL;
 	map->north = NULL;
 	map->south = NULL;
 	map->east = NULL;

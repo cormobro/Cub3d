@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:44 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/22 14:48:10 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:47:41 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	check_sprite_rgb(char *rgb, double *hex, int r, t_map *map)
 		num = ft_atoi(colors[i]);
 		free(colors[i]);
 		if (num > 255 || num < 0)
-			ft_exit("Error\nRGB syntax error", map);
+			ft_exit("Error\nRGB syntax error\n", map);
 		if (i == 0)
 			r = num;
 		else if (i == 1)
@@ -52,7 +52,7 @@ static void	check_sprite_rgb(char *rgb, double *hex, int r, t_map *map)
 	}
 	free(colors);
 	if (i != 3)
-		ft_exit("Error\nRGB syntax error", map);
+		ft_exit("Error\nRGB syntax error\n", map);
 	*hex = (double)(creatergb(r, g, num));
 }
 
