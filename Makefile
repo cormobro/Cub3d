@@ -52,7 +52,7 @@ SRCS = $(addprefix Sources/,\
 		Raycasting/move.c\
 		Raycasting/rotate.c)
 
-NAME = cub3d
+NAME = cub3D
 
 INC = -I ./
 
