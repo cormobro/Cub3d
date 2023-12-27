@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:44 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/27 13:47:41 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:17:56 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,26 @@ static void	check_sprite_rgb(char *rgb, double *hex, int r, t_map *map)
 
 static void	check_sprite_path(char *path, t_map *map)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
+	char	**str;
+	int		j;
 
-	i = ft_strlen(path);
-	if (path[i - 1] != 'm' || path[i - 2] != 'p'
-		|| path[i - 3] != 'x' || path[i - 4] != '.')
+	str = ft_split(path, '/');
+	if (!str)
+		ft_exit("Error\nAllocation failed\n", map);
+	j = 0;
+	while (str[j])
+		j++;
+	i = ft_strlen(str[j - 1]);
+	if (i < 5 || str[j - 1][i - 1] != 'm' || str[j - 1][i - 2] != 'p'
+		|| str[j - 1][i - 3] != 'x' || str[j - 1][i - 4]
+		!= '.' || str[j - 1][i - 5] == '.')
+	{
+		ft_free_array(str);
 		ft_exit("Error\nSprite error: not a .xpm\n", map);
+	}
+	ft_free_array(str);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		ft_exit("Error\nCannot open sprite file\n", map);

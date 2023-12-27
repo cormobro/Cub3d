@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:10 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/22 15:16:26 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:01:27 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ static bool	is_valid_line2(char *str, t_map *map)
 	if (str[0] == 'N' && str[1] == 'O' && str[2] == ' '
 		&& map->north == NULL && get_path(str, &map->north))
 		check = 1;
-	else if (str[0] == 'S' && str[1] == 'O' && str[2] == ' '
+	if (str[0] == 'S' && str[1] == 'O' && str[2] == ' '
 		&& map->south == NULL && get_path(str, &map->south))
 		check = 1;
-	else if (str[0] == 'E' && str[1] == 'A' && str[2] == ' '
+	if (str[0] == 'E' && str[1] == 'A' && str[2] == ' '
 		&& map->east == NULL && get_path(str, &map->east))
 		check = 1;
-	else if (str[0] == 'W' && str[1] == 'E' && str[2] == ' '
+	if (str[0] == 'W' && str[1] == 'E' && str[2] == ' '
 		&& map->west == NULL && get_path(str, &map->west))
 		check = 1;
-	else if (str[0] == 'C' && str[1] == ' ' && map->ceiling == NULL
+	if (str[0] == 'C' && str[1] == ' ' && map->ceiling == NULL
 		&& get_path(str, &map->ceiling))
 		check = 1;
-	else if (str[0] == 'F' && str[1] == ' ' && map->floor == NULL
+	if (str[0] == 'F' && str[1] == ' ' && map->floor == NULL
 		&& get_path(str, &map->floor))
 		check = 1;
 	if (check == 1)
@@ -107,9 +107,9 @@ static bool	cub_extractor(int fd, t_map *map)
 			return (false);
 		}
 		free (line);
-		line = get_next_line(fd);
+		if (map->check == false)
+			line = get_next_line(fd);
 	}
-	free(line);
 	if (map->check == false)
 		return (false);
 	if (!map_extractor(fd, map))
