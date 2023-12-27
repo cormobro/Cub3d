@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:14:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 17:14:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:02:44 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <math.h>
 # include <stdint.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1400
+# define HEIGHT 600
 # define TEX_WIDTH 80
 # define TEX_HEIGHT 80
 
