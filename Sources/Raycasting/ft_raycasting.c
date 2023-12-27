@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:13:09 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 15:28:56 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 10:55:50 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ void	ft_raycasting(t_map *map, t_window *window)
 	t_img	img;
 
 	img.reference = mlx_new_image(window->mlx, WIDTH, HEIGHT);
+	if (img.reference == NULL)
+		ft_mlx_error(map, window, "Error\nFailed to create an image\n");
 	img.addr = mlx_get_data_addr(img.reference,
 			&img.bits_per_pixel, &img.line_length, &img.endian);
+	if (img.addr == NULL)
+		ft_mlx_error(map, window, "Error\nFailed to get the image address\n");
 	x = 0;
 	while (x < WIDTH)
 	{
