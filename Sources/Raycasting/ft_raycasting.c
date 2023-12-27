@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:13:09 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/27 10:55:50 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:19:15 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ static bool	launch_ray(t_map *map)
 	return (compute_perp_wall_dist(map));
 }
 
-static void	side_x_hit(t_map *map, t_window *window, t_img *img, int x)
+static void	side_y_hit(t_map *map, t_window *window, t_img *img, int x)
 {
-	if (map->ray_dir_x < 0)
+	if (map->ray_dir_y < 0)
 		paint_vertical_stripe(map, img, x, &window->image[2]);
 	else
 		paint_vertical_stripe(map, img, x, &window->image[3]);
 }
 
-static void	side_y_hit(t_map *map, t_window *window, t_img *img, int x)
+static void	side_x_hit(t_map *map, t_window *window, t_img *img, int x)
 {
-	if (map->ray_dir_y < 0)
-		paint_vertical_stripe(map, img, x, &window->image[1]);
-	else
+	if (map->ray_dir_x < 0)
 		paint_vertical_stripe(map, img, x, &window->image[0]);
+	else
+		paint_vertical_stripe(map, img, x, &window->image[1]);
 }
 
 void	ft_raycasting(t_map *map, t_window *window)

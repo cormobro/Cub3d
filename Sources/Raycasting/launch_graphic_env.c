@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:10:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/27 10:55:11 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:31:21 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	launch_graphic_env(t_map *map)
 		ft_mlx_error(map, &window,
 			"Error\nFailed to get the image address\n");
 	ft_raycasting(map, &window);
+	mlx_hook(window.mlx_win, 17, 0, ft_close, &window);
 	mlx_hook(window.mlx_win, 2, (1L << 0), ft_handle_input, &window);
 	mlx_loop(window.mlx);
 }

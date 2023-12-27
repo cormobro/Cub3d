@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: febonaer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:33:20 by febonaer          #+#    #+#             */
-/*   Updated: 2023/12/22 15:13:35 by febonaer         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:20:04 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	getplayerdir(t_map *map, char c)
 {
 	if (c == 69)
 	{
+		map->dir_y = 1;
 		map->plane_y = 0;
 		map->plane_x = 0.66;
-		map->dir_y = 1;
 	}
 	else if (c == 78)
 		map->dir_x = -1;
@@ -30,9 +30,9 @@ static void	getplayerdir(t_map *map, char c)
 	}
 	else
 	{
+		map->dir_y = -1;
 		map->plane_y = 0;
 		map->plane_x = -0.66;
-		map->dir_y = -1;
 	}
 }
 
