@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:39:52 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 17:30:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/12/27 10:46:23 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/cub3d.h"
 
-int	ft_closebis(int keycode, t_window *window)
+int	ft_close(int keycode, t_window *window)
 {
 	if (keycode && window->mlx)
 	{

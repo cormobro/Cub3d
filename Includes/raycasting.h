@@ -6,7 +6,7 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:14:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/12/22 23:02:44 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/12/27 11:18:02 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		get_tex_y_coordinate(t_map *map, double step);
 int		get_draw_start(int line_height);
 int		get_draw_end(int line_height);
 void	launch_graphic_env(t_map *map);
+void	ft_mlx_error(t_map *map, t_window *window, char *str);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		get_pixel_color(t_img *texture, int x, int y);
 int		ft_handle_input(int keycode, t_window *window);
@@ -72,7 +73,7 @@ void	move_backward(t_window *window);
 void	move_forward(t_window *window);
 void	rotate_left(t_window *window);
 void	rotate_right(t_window *window);
-int		ft_closebis(int keycode, t_window *window);
+int		ft_close(int keycode, t_window *window);
 int		ft_rotate(int keycode, t_window *window);
 void	strafe_right(t_window *window);
 void	strafe_left(t_window *window);
